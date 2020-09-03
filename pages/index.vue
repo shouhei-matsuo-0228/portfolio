@@ -1,63 +1,85 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">portfolio</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="main-container-outer">
+    <Jumbotron header="松尾のPortfolio" sub-text="Webエンジニア" />
+
+    <div class="main-container-inner">
+      <ContentWrapper heading="プロフィール">
+        <ProfileSection />
+      </ContentWrapper>
+
+      <ContentWrapper heading="スキル">
+        <SkillSection
+          :title="skillTypes.frontend.title"
+          :fields="skillTypes.frontend.fields"
+          :skills="skillTypes.frontend.skills"
+        />
+        <SkillSection
+          :title="skillTypes.backend.title"
+          :fields="skillTypes.backend.fields"
+          :skills="skillTypes.backend.skills"
+        />
+        <SkillSection
+          :title="skillTypes.other.title"
+          :fields="skillTypes.other.fields"
+          :skills="skillTypes.other.skills"
+        />
+      </ContentWrapper>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      // TODO: 別ファイルで持っておきたい。どこにファイル作るのが正解なのか。
+      skillTypes: {
+        frontend: {
+          title: 'フロントエンド',
+          fields: [
+            { key: 'name', label: '技術' },
+            { key: 'period', label: '経験年数' },
+          ],
+          skills: [
+            { name: 'HTML', period: '1年' },
+            { name: 'CSS', period: '1年' },
+            { name: 'Javascript', period: '1年' },
+          ],
+        },
+        backend: {
+          title: 'バックエンド',
+          fields: [
+            { key: 'name', label: '技術' },
+            { key: 'period', label: '経験年数' },
+          ],
+          skills: [
+            { name: 'PHP', period: '1年' },
+            { name: 'Ruby', period: '3年' },
+            { name: 'VB6', period: '3年' },
+            { name: 'Perl', period: '3年' },
+          ],
+        },
+        other: {
+          title: 'その他',
+          fields: [
+            { key: 'name', label: '技術' },
+            { key: 'period', label: '経験年数' },
+          ],
+          skills: [{ name: 'Emacs', period: '4年' }],
+        },
+      },
+    }
+  },
+}
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="sass" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap');
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+.main-container-outer
+  font-family: 'Noto Sans JP'
+  background-color: #fafafa
+.main-container-inner
+  width: 80%
+  margin: 0 auto
 </style>
