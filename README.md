@@ -18,3 +18,7 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## ScreenShot
+
+![localhost_64884_](https://user-images.githubusercontent.com/70563074/92051739-eedda780-edc7-11ea-807a-9fa4a992c79f.png)
